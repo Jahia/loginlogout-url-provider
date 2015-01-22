@@ -8,6 +8,6 @@
 <body>
 Service parameter : <%=request.getParameter("service")%> <br/>
 Default logout URL : <%=StringUtils.defaultIfEmpty(LogoutConfig.getInstance().getCustomLogoutUrl(request), Logout.getLogoutServletPath()) %> <br/>
-<a href='<%=request.getParameter("service")%>'>Click here to logout</a>
+<a href='<%=request.getParameter("service")%>?redirect='>Click here to logout</a>
 </body>
 </html>

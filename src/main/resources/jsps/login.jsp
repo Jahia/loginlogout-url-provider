@@ -12,7 +12,14 @@
 <body>
 
 <form method="post" name="loginForm" action="/cms/login">
-    <c:set var="redirectTo" value="${requestScope['javax.servlet.error.request_uri']}"/>
+    <c:choose>
+        <c:when test="${not empty param.redirectTo}">
+            <c:set var="redirectTo" value="${param.redirectTo}"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="redirectTo" value="${param.service}"/>
+        </c:otherwise>
+    </c:choose>
     <input type="hidden" name="redirect" value="${fn:escapeXml(redirectTo)}"/>
     <p>
         <label class="left" for="username">User</label>
